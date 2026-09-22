@@ -1,0 +1,1468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#101714" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Gym Logger" />
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAACv0lEQVRYhc2VX0iTURjGf+fbp4amflZu4KLImZqpBF1JdRch2YWBUZiKGdFd9916YRBEEASR/XcLJegmxbugtIKgCDdSbEUxnWk6nUYyt/Z208a0Nq3Ur+dw4D3vc855nvPyfecoEmBzVFr16PdzQA2wE8hidRAENSiIK9MSavd6vaEYoWKBfUfZMRFuAtmrJJoMQ2A56v/oHoob+CnelWhojTGlaVI18mHwnbI5Kq2WSNjL2p98KQb8n2x7LTk5m86DHFxncQBbTt7cR52oHFm3wi+BRFWTLkoc5siDKPboCBvNMqDA0EHM0gdAF7MNmKyPJvx567h7g5cvnlC6q5iyslKe9z3Gee/mX+wkK6vAVrudpsZ6RISr165TWVEOQHFREQBZWZlUlO8mNyeXs2daSM9I5/adDkZH/cvuvaKP8PDhQ5w4XgeA2+1JOu/AvioaTp4AYGJiguvtt5Y3IJLcQFpaGjabFcMw4rkt+ZvjcV6esWh+ImcYBnZ7AeOfxwlHIkk1VH5BYVIHD7qclJaUpD7CMnB7PNQ3nErKp6zAwkL4n8QBdItOKg0t1eKm5tNU19TidHXGc5cuX1kULx3H4HR1Ul1TS31jc2qDqdyFwxF8Ph/T04F47svEl3gcCAQWzU/kpqcD+Hy+lOKwwr+gu6cXq81KKLRAX/+zBGbx2qf9/bjud6JpGt09vb/wvzewgntgZGSU1ta2+HjA7cFRWMjwsBcRIRQK8XZwiOBMkLYLF5ffMAFqk22bqZex6W/Bf/Aamm5ACAK5JunPaoK8+ZtndJXae02QDgTM6eqRAvTczQWvUVSsQ8kTEYymU6QBkahSdYhMIcI6dVEiLXN+/6QGMDc5OhxF7QcG1/7gKqigbmZq7CGAJZZemJ+bDM1vb8/I/DaOKAOi2cCGVVL9iuAB2iWsGmZnxl7FiB8eW8eFYcgZhwAAAABJRU5ErkJggg==" />
+  <link rel="icon" type="image/png" sizes="64x64" href="data:image/png;base64,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" />
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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" />
+  <title>Gym Logger</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f3f5f1;
+      --surface: #ffffff;
+      --surface-2: #e7ebe5;
+      --field: #f7f9f5;
+      --text: #132019;
+      --muted: #536258;
+      --line: #ced6cf;
+      --accent: #476c08;
+      --accent-ink: #ffffff;
+      --accent-soft: #dff2bb;
+      --danger: #b82f38;
+      --danger-soft: #fae0e1;
+      --shadow: 0 12px 36px rgba(16, 30, 20, .08);
+      --nav: rgba(250, 252, 248, .96);
+      --focus: rgba(71, 108, 8, .22);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101714;
+        --surface: #18211d;
+        --surface-2: #222d27;
+        --field: #111915;
+        --text: #f4f7f2;
+        --muted: #a2b0a7;
+        --line: #34423a;
+        --accent: #b8f34a;
+        --accent-ink: #142000;
+        --accent-soft: #2d421a;
+        --danger: #ff8b91;
+        --danger-soft: #4a2427;
+        --shadow: 0 16px 40px rgba(0, 0, 0, .26);
+        --nav: rgba(16, 23, 20, .96);
+        --focus: rgba(184, 243, 74, .18);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--active-screen-bg, var(--bg)); -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      background: var(--active-screen-bg, var(--bg));
+      color: var(--text);
+      font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+    [hidden] { display: none !important; }
+    .auth-gate {
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: max(24px, env(safe-area-inset-top)) 18px max(24px, env(safe-area-inset-bottom));
+      color: #f4f7f2;
+      background:
+        radial-gradient(circle at 50% 16%, rgba(184, 243, 74, .085), transparent 30%),
+        #0d1511;
+    }
+    .auth-card {
+      width: min(100%, 420px);
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .115), rgba(255, 255, 255, .045));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 24px 70px rgba(0, 0, 0, .32);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+    }
+    .auth-card h1 { font-size: clamp(2.25rem, 11vw, 3.5rem); color: #f4f7f2; }
+    .auth-card > p { margin: 11px 0 25px; color: #b8c4bd; line-height: 1.5; }
+    .auth-card label { color: #d8e1db; }
+    .auth-card input {
+      border-color: rgba(255, 255, 255, .16);
+      background: rgba(3, 10, 7, .34);
+      color: #f4f7f2;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+    }
+    .auth-card input:focus { border-color: #b8f34a; box-shadow: 0 0 0 4px rgba(184, 243, 74, .16); }
+    .auth-card .primary { background: #b8f34a; color: #142000; }
+    .auth-card .field + .field { margin-top: 15px; }
+    .auth-status { display: none; margin: 14px 2px 0; color: #d8e1db; font-size: .86rem; line-height: 1.45; }
+    .auth-status.show { display: block; }
+    .auth-status.error { color: #ff9ba1; }
+    .screen-head-actions { display: flex; align-items: center; justify-content: flex-end; gap: 7px; flex: none; }
+    .sign-out {
+      width: 38px;
+      min-height: 38px;
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .075);
+      color: #d8e1db;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12);
+      backdrop-filter: blur(16px) saturate(170%);
+      -webkit-backdrop-filter: blur(16px) saturate(170%);
+    }
+    .sign-out:disabled { opacity: .55; cursor: wait; }
+    .app {
+      width: min(100%, 760px);
+      min-height: 100dvh;
+      margin: 0 auto;
+      padding: max(22px, env(safe-area-inset-top)) 18px calc(112px + env(safe-area-inset-bottom));
+      background: var(--active-screen-bg, var(--bg));
+    }
+    .screen { display: none; min-height: calc(100dvh - 134px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); background: var(--screen-bg, var(--bg)); }
+    .screen.active { display: block; animation: screen-in .18s ease-out; }
+    @keyframes screen-in { from { opacity: .55; } to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .screen.active { animation: none; } }
+    .screen-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 2px 2px 22px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 8vw, 3.3rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 770;
+    }
+    .screen-head h1 { color: #f4f7f2; }
+    .screen-head p { margin: 7px 0 0; color: #b8c4bd; font-size: .95rem; }
+    .date-chip {
+      flex: none;
+      padding: 8px 11px;
+      border-radius: 99px;
+      color: #d8e1db;
+      background: rgba(255, 255, 255, .1);
+      font-size: .78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .goal-total { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+    .goal-total strong { font-size: clamp(2.7rem, 14vw, 4.8rem); line-height: .9; letter-spacing: -.06em; }
+    .goal-total span { color: var(--muted); font-size: .9rem; font-weight: 700; }
+    .progress-track { height: 13px; margin-top: 20px; overflow: hidden; border-radius: 99px; background: var(--surface-2); }
+    .progress-fill { width: 0; height: 100%; border-radius: inherit; background: var(--accent); transition: width .35s ease; }
+    .goal-meta { display: flex; justify-content: space-between; gap: 14px; margin-top: 10px; color: var(--muted); font-size: .78rem; font-weight: 680; }
+    .goal-meta span:last-child { text-align: right; }
+    .goal-breakdown { margin-top: 25px; padding-top: 19px; border-top: 1px solid var(--line); }
+    .password-panel { margin-top: 14px; }
+    .password-panel h2 { margin: 0 0 5px; font-size: 1.05rem; letter-spacing: -.018em; }
+    .password-panel > p { margin: 0 0 17px; color: var(--muted); font-size: .82rem; line-height: 1.45; }
+    .password-status { display: none; margin: 12px 2px 0; font-size: .84rem; line-height: 1.4; }
+    .password-status.show { display: block; }
+    .password-status.success { color: var(--accent); }
+    .password-status.error { color: var(--danger); }
+    .goal-breakdown h2 { margin: 0; font-size: .96rem; letter-spacing: -.015em; }
+    .goal-breakdown p { margin: 4px 0 0; color: var(--muted); font-size: .76rem; }
+    .week-bars { height: 182px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-top: 17px; }
+    .day-bar { min-width: 0; display: grid; grid-template-rows: 20px minmax(0, 1fr) 20px; gap: 7px; text-align: center; }
+    .day-value { min-width: 0; overflow: hidden; color: var(--muted); font-size: .65rem; font-weight: 730; white-space: nowrap; }
+    .day-track { min-height: 0; display: flex; align-items: flex-end; overflow: hidden; border-radius: 7px 7px 4px 4px; background: var(--surface-2); }
+    .day-fill { width: 100%; min-height: 0; border-radius: 6px 6px 3px 3px; background: var(--accent); }
+    .day-label { color: var(--muted); font-size: .7rem; font-weight: 750; }
+    @media (prefers-reduced-motion: reduce) { .progress-fill { transition: none; } }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 12px; }
+    .field { display: grid; gap: 7px; min-width: 0; }
+    .field.full { grid-column: 1 / -1; }
+    label, .label {
+      color: var(--muted);
+      font-size: .79rem;
+      font-weight: 730;
+      letter-spacing: .015em;
+    }
+    .required::after { content: " · required"; color: var(--accent); font-weight: 650; }
+    input, select, textarea {
+      width: 100%;
+      min-width: 0;
+      min-height: 50px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--field);
+      color: var(--text);
+      padding: 12px 13px;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    select {
+      padding-right: 38px;
+      border-color: rgba(19, 32, 25, .18);
+      border-radius: 14px;
+      background-color: rgba(255, 255, 255, .30);
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+        linear-gradient(135deg, var(--muted) 50%, transparent 50%),
+        linear-gradient(180deg, rgba(255, 255, 255, .52) 0%, rgba(255, 255, 255, .12) 30%, rgba(255, 255, 255, .025) 100%);
+      background-position: calc(100% - 18px) 21px, calc(100% - 13px) 21px, 0 0;
+      background-size: 5px 5px, 5px 5px, 100% 100%;
+      background-repeat: no-repeat;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .62), inset 0 -1px 0 rgba(19, 32, 25, .10), 0 5px 14px rgba(15, 35, 24, .07);
+      backdrop-filter: blur(18px) saturate(180%) brightness(1.05);
+      -webkit-backdrop-filter: blur(18px) saturate(180%) brightness(1.05);
+    }
+    select option { background: var(--surface); color: var(--text); }
+    @media (prefers-color-scheme: dark) {
+      select {
+        border-color: rgba(255, 255, 255, .16);
+        background-color: rgba(255, 255, 255, .045);
+        background-image:
+          linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+          linear-gradient(135deg, var(--muted) 50%, transparent 50%),
+          linear-gradient(180deg, rgba(255, 255, 255, .13) 0%, rgba(255, 255, 255, .035) 31%, rgba(3, 10, 7, .06) 100%);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .26), inset 0 -1px 0 rgba(0, 0, 0, .24), 0 7px 18px rgba(0, 0, 0, .12);
+      }
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--focus); }
+    input::placeholder, textarea::placeholder { color: var(--muted); opacity: .72; }
+    .number-wrap { position: relative; }
+    .number-wrap input { padding-right: 50px; }
+    .unit-suffix { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: .8rem; pointer-events: none; }
+    .primary, .secondary, .ghost, .delete-btn, .icon-btn {
+      border: 0;
+      cursor: pointer;
+      min-height: 48px;
+      border-radius: 12px;
+      font-weight: 760;
+    }
+    .primary {
+      width: 100%;
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      padding: 13px 18px;
+    }
+    .primary:disabled, .secondary:disabled { opacity: .55; cursor: wait; }
+    .secondary { background: var(--accent-soft); color: var(--text); padding: 11px 15px; }
+    .ghost { background: var(--surface-2); color: var(--text); padding: 10px 13px; }
+    .icon-btn { width: 44px; min-height: 44px; background: transparent; color: var(--muted); display: grid; place-items: center; }
+    .inline-actions { display: flex; gap: 10px; margin-top: 13px; }
+    .inline-actions > * { flex: 1; }
+    .form-error {
+      display: none;
+      margin: 12px 2px 0;
+      padding: 11px 12px;
+      border-radius: 10px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: .84rem;
+      line-height: 1.35;
+    }
+    .form-error.show { display: block; }
+    .spinner {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2px solid currentColor; border-right-color: transparent;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .exercise-stack { display: grid; gap: 14px; }
+    .exercise-card { border: 1px solid var(--line); border-radius: 16px; padding: 15px; background: var(--field); }
+    .exercise-top { display: grid; grid-template-columns: 1fr 44px; align-items: end; gap: 7px; margin-bottom: 15px; }
+    .set-head, .set-row { display: grid; grid-template-columns: 30px minmax(0, 1fr) minmax(0, 1fr) 42px; gap: 8px; align-items: center; }
+    .set-head { color: var(--muted); font-size: .7rem; font-weight: 730; margin-bottom: 6px; }
+    .set-row + .set-row { margin-top: 8px; }
+    .set-no { color: var(--muted); font-weight: 760; text-align: center; }
+    .set-row input { min-height: 46px; padding: 10px; }
+    .set-row .icon-btn { min-height: 42px; width: 42px; }
+    .add-set { margin-top: 11px; width: 100%; }
+    .other-kind { display: none; }
+    .other-kind.show { display: grid; }
+    .history-tools { margin-bottom: 15px; }
+    .segmented {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      padding: 4px;
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .025) 36%, rgba(5, 13, 9, .06)) padding-box,
+        linear-gradient(180deg, rgba(255, 255, 255, .40), rgba(255, 255, 255, .13) 48%, rgba(255, 255, 255, .05)) border-box;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .34), inset 0 -1px 0 rgba(0, 0, 0, .22), 0 10px 26px rgba(3, 17, 11, .20);
+      backdrop-filter: blur(28px) saturate(180%) brightness(1.07);
+      -webkit-backdrop-filter: blur(28px) saturate(180%) brightness(1.07);
+    }
+    .filter-btn {
+      position: relative;
+      z-index: 1;
+      flex: 0 1 auto;
+      width: auto;
+      min-width: max-content;
+      min-height: 44px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: rgba(255, 255, 255, .63);
+      padding: 7px 10px;
+      font-size: .73rem;
+      font-weight: 750;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color .18s ease;
+    }
+    .filter-btn.active { background: transparent; color: #fff; box-shadow: none; }
+    .history-list { display: grid; gap: 12px; }
+    .history-card { background: var(--surface); border: 1px solid var(--line); border-radius: 17px; padding: 16px; }
+    .history-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .history-kind { display: flex; align-items: center; gap: 9px; min-width: 0; }
+    .kind-mark { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; color: var(--accent); background: var(--accent-soft); flex: none; }
+    .history-card h2 { margin: 0; font-size: 1rem; line-height: 1.2; letter-spacing: -.015em; }
+    .history-date { color: var(--muted); font-size: .76rem; margin-top: 3px; }
+    .delete-btn { flex: none; min-height: 40px; padding: 8px 10px; background: var(--danger-soft); color: var(--danger); font-size: .76rem; }
+    .metrics { display: flex; flex-wrap: wrap; gap: 9px 14px; margin: 15px 0 0; }
+    .metric { min-width: 72px; }
+    .metric strong { display: block; font-size: 1rem; }
+    .metric span { color: var(--muted); font-size: .71rem; }
+    .history-notes { margin: 13px 0 0; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; white-space: pre-wrap; }
+    .strength-detail { margin-top: 14px; display: grid; gap: 10px; }
+    .exercise-summary { background: var(--field); border-radius: 11px; padding: 10px 11px; }
+    .exercise-summary strong { display: block; font-size: .86rem; margin-bottom: 5px; }
+    .exercise-summary span { color: var(--muted); font-size: .78rem; line-height: 1.5; }
+    .load-state, .empty-state { text-align: center; color: var(--muted); padding: 46px 18px; }
+    .load-state .spinner { margin: 0 auto 12px; color: var(--accent); }
+    .empty-state svg { color: var(--line); margin-bottom: 10px; }
+    .empty-state strong { display: block; color: var(--text); margin-bottom: 4px; }
+    #screen-history .load-state, #screen-history .empty-state { color: #b8c4bd; }
+    #screen-history .load-state .spinner { color: #d8e1db; }
+    #screen-history .empty-state svg { color: #75837b; }
+    #screen-history .empty-state strong { color: #f4f7f2; }
+    .retry { margin-top: 15px; }
+    .bottom-nav {
+      position: fixed;
+      z-index: 20;
+      left: 50%;
+      bottom: max(10px, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      width: min(calc(100% - 24px), 736px);
+      display: grid;
+      grid-template-columns: .72fr 1.07fr 1fr 1.5fr .82fr;
+      gap: 3px;
+      padding: 6px;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid transparent;
+      border-radius: 25px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .105) 0%, rgba(255, 255, 255, .026) 31%, rgba(7, 15, 12, .065) 100%) padding-box,
+        linear-gradient(180deg, rgba(255, 255, 255, .46) 0%, rgba(255, 255, 255, .16) 42%, rgba(255, 255, 255, .055) 100%) border-box;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .40),
+        inset 0 -1px 0 rgba(2, 10, 7, .30),
+        0 16px 40px rgba(2, 16, 11, .30),
+        0 4px 12px rgba(4, 12, 9, .18);
+      backdrop-filter: blur(30px) saturate(180%) brightness(1.08);
+      -webkit-backdrop-filter: blur(30px) saturate(180%) brightness(1.08);
+    }
+    .bottom-nav::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .22) 0%, rgba(255, 255, 255, .075) 10%, transparent 31%);
+      box-shadow: inset 1px 0 0 rgba(255, 255, 255, .08), inset -1px 0 0 rgba(255, 255, 255, .08);
+    }
+    .bottom-nav::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 1px;
+      pointer-events: none;
+      border-radius: 23px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: linear-gradient(90deg, rgba(255, 255, 255, .06), transparent 10%, transparent 90%, rgba(255, 255, 255, .06));
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      filter: url(#glass-edge-refraction);
+      opacity: .72;
+    }
+    .tab-btn {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+      min-height: 58px;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 3px;
+      border: 1px solid transparent;
+      border-radius: 19px;
+      background: transparent;
+      color: rgba(255, 255, 255, .56);
+      font-size: .67rem;
+      font-weight: 720;
+      cursor: pointer;
+      transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .tab-btn.active {
+      color: #fff;
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+    }
+    .glass-indicator {
+      position: absolute;
+      z-index: 0;
+      top: 6px;
+      bottom: 6px;
+      left: 0;
+      width: 0;
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, .27);
+      border-radius: 19px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .245) 0%, rgba(255, 255, 255, .105) 48%, rgba(255, 255, 255, .07) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .42),
+        inset 0 -1px 0 rgba(255, 255, 255, .08),
+        inset 0 0 16px rgba(255, 255, 255, .055),
+        0 5px 18px rgba(2, 12, 8, .20);
+      backdrop-filter: blur(18px) saturate(210%) brightness(1.12);
+      -webkit-backdrop-filter: blur(18px) saturate(210%) brightness(1.12);
+      transform: translate3d(0, 0, 0);
+      will-change: transform, width;
+    }
+    .glass-indicator.ready {
+      transition: transform 300ms cubic-bezier(.22, 1.28, .36, 1), width 300ms cubic-bezier(.22, 1.28, .36, 1);
+    }
+    .segmented .glass-indicator {
+      top: 4px;
+      bottom: 4px;
+      border-radius: 10px;
+    }
+    .tab-btn svg {
+      width: 21px;
+      height: 21px;
+      color: currentColor;
+    }
+    .tab-btn span { max-width: 100%; white-space: nowrap; }
+    @media (prefers-reduced-motion: reduce) { .tab-btn, .glass-indicator.ready { transition: none; } }
+    @media (max-width: 480px) {
+      .tab-btn { font-size: .57rem; letter-spacing: -.02em; }
+    }
+    .toast {
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      top: max(16px, env(safe-area-inset-top));
+      transform: translate(-50%, -16px);
+      width: min(calc(100% - 36px), 420px);
+      padding: 13px 15px;
+      border-radius: 13px;
+      background: var(--text);
+      color: var(--bg);
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      font-size: .88rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s, transform .2s;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .modal-backdrop {
+      position: fixed;
+      z-index: 80;
+      inset: 0;
+      display: none;
+      place-items: end center;
+      background: rgba(0, 0, 0, .58);
+      padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
+    }
+    .modal-backdrop.show { display: grid; }
+    .modal { width: min(100%, 430px); background: var(--surface); color: var(--text); border-radius: 20px; padding: 20px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+    .modal h2 { margin: 0 0 8px; font-size: 1.22rem; }
+    .modal p { margin: 0; color: var(--muted); line-height: 1.45; }
+    .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .modal .danger-confirm { background: var(--danger); color: #fff; }
+    @media (min-width: 620px) {
+      .app { padding-left: 30px; padding-right: 30px; }
+      .panel { padding: 24px; }
+      .modal-backdrop { place-items: center; }
+    }
+    @media (max-width: 370px) {
+      .app { padding-left: 13px; padding-right: 13px; }
+      .panel { padding: 15px; }
+      .tab-btn { font-size: .54rem; letter-spacing: -.03em; }
+      .filter-btn { padding-inline: 8px; font-size: .66rem; }
+      .set-head, .set-row { grid-template-columns: 24px minmax(0, 1fr) minmax(0, 1fr) 38px; gap: 5px; }
+      .set-row .icon-btn { width: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="auth-gate" id="auth-gate" aria-labelledby="auth-title">
+    <form class="auth-card" id="auth-form">
+      <h1 id="auth-title">Welcome back</h1>
+      <p id="auth-intro">Sign in with your email and password.</p>
+      <div class="field" id="auth-email-field">
+        <label for="auth-email">Email</label>
+        <input id="auth-email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" value="omidashaamir@gmail.com" required />
+      </div>
+      <div class="field" id="auth-password-field">
+        <label for="auth-password">Password</label>
+        <input id="auth-password" type="password" autocomplete="current-password" required />
+      </div>
+      <button class="primary" id="auth-submit" type="submit"><span>Sign in</span></button>
+      <p class="auth-status" id="auth-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <main class="app" hidden>
+    <section class="screen active" id="screen-goal" aria-labelledby="title-goal">
+      <div class="screen-head">
+        <div><h1 id="title-goal">Weekly goal</h1><p id="goal-range">Sunday through Saturday · Eastern Time</p></div>
+        <div class="screen-head-actions"><span class="date-chip" id="goal-status-chip">—</span><button class="sign-out" type="button" aria-label="Sign out" title="Sign out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M10 5H5v14h5M14 8l4 4-4 4M8 12h10" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+      <div class="panel" id="goal-content" aria-live="polite">
+        <div class="load-state"><div class="spinner"></div><span>Loading this week…</span></div>
+      </div>
+      <!-- FUTURE WEIGHTLIFTING GOALS: add a strength-goal panel here once targets are defined. -->
+      <form class="panel password-panel" id="password-form">
+        <h2>Change password</h2>
+        <p>Use a password you don’t use anywhere else.</p>
+        <div class="form-grid">
+          <div class="field full"><label for="new-password">New password</label><input id="new-password" type="password" autocomplete="new-password" required /></div>
+          <div class="field full"><label for="confirm-password">Confirm new password</label><input id="confirm-password" type="password" autocomplete="new-password" required /></div>
+        </div>
+        <p class="password-status" id="password-status" role="status" aria-live="polite"></p>
+        <button class="primary" id="password-submit" type="submit"><span>Update password</span></button>
+      </form>
+    </section>
+
+    <section class="screen" id="screen-treadmill" aria-labelledby="title-treadmill">
+      <div class="screen-head">
+        <div><h1 id="title-treadmill">Log treadmill</h1><p>Record the numbers from your session.</p></div>
+        <div class="screen-head-actions"><span class="date-chip js-today"></span><button class="sign-out" type="button" aria-label="Sign out" title="Sign out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M10 5H5v14h5M14 8l4 4-4 4M8 12h10" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+      <form class="panel" id="treadmill-form">
+        <div class="form-grid">
+          <div class="field"><label for="tm-duration">Duration</label><div class="number-wrap"><input id="tm-duration" type="number" min="0" step="0.1" value="30" inputmode="decimal" required /><span class="unit-suffix">min</span></div></div>
+          <div class="field"><label for="tm-calories" class="required">Calories</label><div class="number-wrap"><input id="tm-calories" type="number" min="0" step="1" inputmode="decimal" required /><span class="unit-suffix">cal</span></div></div>
+          <div class="field"><label for="tm-incline">Incline</label><div class="number-wrap"><input id="tm-incline" type="number" min="0" step="0.1" value="15" inputmode="decimal" required /><span class="unit-suffix">%</span></div></div>
+          <div class="field"><label for="tm-speed">Speed</label><div class="number-wrap"><input id="tm-speed" type="number" min="0" step="0.1" value="2.6" inputmode="decimal" required /><span class="unit-suffix">mph</span></div></div>
+          <div class="field full"><label for="tm-distance">Distance <span style="font-weight:500">(optional)</span></label><div class="number-wrap"><input id="tm-distance" type="number" min="0" step="0.01" inputmode="decimal" /><span class="unit-suffix">mi</span></div></div>
+          <div class="field full"><label for="tm-notes">Notes <span style="font-weight:500">(optional)</span></label><textarea id="tm-notes" placeholder="How did it feel?"></textarea></div>
+        </div>
+        <div class="form-error" id="tm-error" role="alert"></div>
+        <button class="primary" type="submit" id="tm-save"><span>Save treadmill session</span></button>
+      </form>
+    </section>
+
+    <section class="screen" id="screen-strength" aria-labelledby="title-strength">
+      <div class="screen-head">
+        <div><h1 id="title-strength">Log strength</h1><p>Add each exercise and its working sets.</p></div>
+        <div class="screen-head-actions"><span class="date-chip js-today"></span><button class="sign-out" type="button" aria-label="Sign out" title="Sign out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M10 5H5v14h5M14 8l4 4-4 4M8 12h10" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+      <form class="panel" id="strength-form">
+        <div class="form-grid">
+          <div class="field full"><label for="st-notes">Session notes <span style="font-weight:500">(optional)</span></label><textarea id="st-notes" placeholder="Energy, form notes, or a PR"></textarea></div>
+          <div class="field full"><span class="label">Exercises</span><div class="exercise-stack" id="exercise-stack"></div><button class="secondary" type="button" id="add-exercise" style="margin-top:13px;width:100%">+ Add exercise</button></div>
+        </div>
+        <div class="form-error" id="st-error" role="alert"></div>
+        <button class="primary" type="submit" id="st-save"><span>Save strength session</span></button>
+      </form>
+    </section>
+
+    <section class="screen" id="screen-measurements" aria-labelledby="title-measurements">
+      <div class="screen-head">
+        <div><h1 id="title-measurements">Add measurement</h1><p>Track body changes over time.</p></div>
+        <div class="screen-head-actions"><span class="date-chip js-today"></span><button class="sign-out" type="button" aria-label="Sign out" title="Sign out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M10 5H5v14h5M14 8l4 4-4 4M8 12h10" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+      <form class="panel" id="measurement-form">
+        <div class="form-grid">
+          <div class="field full"><label for="ms-kind">Measurement</label><select id="ms-kind"><option>Body weight</option><option>Chest</option><option>Waist</option><option>Hips</option><option>Arm (L)</option><option>Arm (R)</option><option>Thigh (L)</option><option>Thigh (R)</option><option>Shoulders</option><option>Neck</option><option>Body fat %</option><option value="Other">Other…</option></select></div>
+          <div class="field full other-kind" id="other-kind-field"><label for="ms-kind-other" class="required">Custom measurement</label><input id="ms-kind-other" type="text" maxlength="80" placeholder="e.g. Calf (L)" /></div>
+          <div class="field"><label for="ms-value" class="required">Value</label><input id="ms-value" type="number" min="0" step="0.01" inputmode="decimal" required /></div>
+          <div class="field"><label for="ms-unit">Unit</label><select id="ms-unit"><option value="lbs">lbs</option><option value="kg">kg</option><option value="in">in</option><option value="cm">cm</option><option value="%">%</option></select></div>
+        </div>
+        <div class="form-error" id="ms-error" role="alert"></div>
+        <button class="primary" type="submit" id="ms-save"><span>Save measurement</span></button>
+      </form>
+    </section>
+
+    <section class="screen" id="screen-history" aria-labelledby="title-history">
+      <div class="screen-head">
+        <div><h1 id="title-history">History</h1><p>Newest entries first.</p></div>
+        <div class="screen-head-actions"><span class="date-chip" id="history-count">—</span><button class="sign-out" type="button" aria-label="Sign out" title="Sign out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M10 5H5v14h5M14 8l4 4-4 4M8 12h10" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+      <div class="history-tools">
+        <div class="segmented" role="group" aria-label="Filter history">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="treadmill" type="button">Treadmill</button>
+          <button class="filter-btn" data-filter="strength" type="button">Strength</button>
+          <button class="filter-btn" data-filter="measurement" type="button">Measurements</button>
+        </div>
+      </div>
+      <div id="history-content" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <filter id="glass-edge-refraction" x="-5%" y="-8%" width="110%" height="116%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.085" numOctaves="1" seed="9" result="glass-noise" />
+      <feGaussianBlur in="glass-noise" stdDeviation="0.35" result="soft-noise" />
+      <feDisplacementMap in="SourceGraphic" in2="soft-noise" scale="1.35" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
+  <nav class="bottom-nav" aria-label="Main navigation" hidden>
+    <button class="tab-btn active" data-tab="goal" type="button" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M5 19V9M10 19V5M15 19v-7M20 19V3M3 19h19" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Goal</span>
+    </button>
+    <button class="tab-btn" data-tab="treadmill" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M6 19h12M8 19l1.3-9h6.5l2.2 9M10 7.5h4.5M17.5 5l2 2-2 2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Treadmill</span>
+    </button>
+    <button class="tab-btn" data-tab="strength" type="button">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="currentColor" d="M5.25 10.75h13.5v2.5H5.25zM3 8.25A1.25 1.25 0 0 1 4.25 7h.5A1.25 1.25 0 0 1 6 8.25v7.5A1.25 1.25 0 0 1 4.75 17h-.5A1.25 1.25 0 0 1 3 15.75v-7.5Zm15 0A1.25 1.25 0 0 1 19.25 7h.5A1.25 1.25 0 0 1 21 8.25v7.5A1.25 1.25 0 0 1 19.75 17h-.5A1.25 1.25 0 0 1 18 15.75v-7.5Z"/></svg><span>Strength</span>
+    </button>
+    <button class="tab-btn" data-tab="measurements" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M6 4h12v16H6zM9 4v3M12 4v2M15 4v3M9 17h6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Measurements</span>
+    </button>
+    <button class="tab-btn" data-tab="history" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6M4 4v4.6h4.6M12 8v4l2.7 1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>History</span>
+    </button>
+  </nav>
+
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="delete-modal" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+    <div class="modal">
+      <h2 id="delete-title">Delete this entry?</h2>
+      <p id="delete-copy">This can’t be undone.</p>
+      <div class="modal-actions">
+        <button class="ghost" type="button" id="delete-cancel">Cancel</button>
+        <button class="primary danger-confirm" type="button" id="delete-confirm" style="margin:0">Delete</button>
+      </div>
+      <div class="form-error" id="delete-error" role="alert"></div>
+    </div>
+  </div>
+
+  <script>
+    // Public client configuration. This anon key is intentionally browser-visible.
+    const CONFIG = {
+      supabaseUrl: 'https://zhhzjphalltrxlqatayn.supabase.co',
+      anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpoaHpqcGhhbGx0cnhscWF0YXluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMDc3NTcsImV4cCI6MjEwNTU4Mzc1N30.6Q36qcYWpfJGHgBrYTFGfZliMe2UUSzhS9JC5HkCCg0'
+    };
+    function createSupabaseAuthClient(url, anonKey) {
+      const storageKey = 'gym-logger-auth-session';
+      let session = null;
+      let refreshTimer = null;
+      const listeners = new Set();
+
+      function notify(event) { listeners.forEach(listener => listener(event, session)); }
+      function normalizeSession(payload, previous = {}) {
+        const expiresIn = Number(payload.expires_in || 3600);
+        return {
+          ...previous,
+          ...payload,
+          refresh_token: payload.refresh_token || previous.refresh_token,
+          expires_at: Number(payload.expires_at || Math.floor(Date.now() / 1000) + expiresIn)
+        };
+      }
+      function store(nextSession) {
+        session = nextSession;
+        if (session) localStorage.setItem(storageKey, JSON.stringify(session));
+        else localStorage.removeItem(storageKey);
+        scheduleRefresh();
+      }
+      async function request(path, { method = 'POST', token, body } = {}) {
+        const response = await fetch(`${url}${path}`, {
+          method,
+          headers: {
+            apikey: anonKey,
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            ...(body === undefined ? {} : { 'Content-Type': 'application/json' })
+          },
+          body: body === undefined ? undefined : JSON.stringify(body)
+        });
+        const text = await response.text();
+        let data = {};
+        if (text) { try { data = JSON.parse(text); } catch (_) {} }
+        if (!response.ok) throw new Error(data.msg || data.message || data.error_description || data.error || `Request failed (${response.status})`);
+        return data;
+      }
+      async function refreshSession() {
+        if (!session?.refresh_token) return null;
+        try {
+          const payload = await request('/auth/v1/token?grant_type=refresh_token', { body: { refresh_token: session.refresh_token } });
+          store(normalizeSession(payload, session));
+          notify('TOKEN_REFRESHED');
+          return session;
+        } catch (error) {
+          if (session && Date.now() >= session.expires_at * 1000) {
+            store(null);
+            notify('SIGNED_OUT');
+          } else if (session) {
+            clearTimeout(refreshTimer);
+            refreshTimer = setTimeout(refreshSession, 30000);
+          }
+          throw error;
+        }
+      }
+      function scheduleRefresh() {
+        clearTimeout(refreshTimer);
+        if (!session?.refresh_token || !session.expires_at) return;
+        const delay = Math.max(1000, session.expires_at * 1000 - Date.now() - 60000);
+        refreshTimer = setTimeout(() => refreshSession().catch(() => {}), delay);
+      }
+      function restoreStoredSession() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+          if (saved?.access_token && saved?.refresh_token) session = saved;
+        } catch (_) { localStorage.removeItem(storageKey); }
+      }
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && session?.expires_at && Date.now() >= session.expires_at * 1000 - 60000) refreshSession().catch(() => {});
+      });
+      return {
+        auth: {
+          async getSession() {
+            try {
+              restoreStoredSession();
+              if (session?.expires_at && Date.now() >= session.expires_at * 1000 - 60000) {
+                try { await refreshSession(); } catch (_) {}
+              } else scheduleRefresh();
+              return { data: { session }, error: null };
+            } catch (error) {
+              return { data: { session: null }, error };
+            }
+          },
+          onAuthStateChange(listener) {
+            listeners.add(listener);
+            setTimeout(() => listener('INITIAL_SESSION', session), 0);
+            return { data: { subscription: { unsubscribe: () => listeners.delete(listener) } } };
+          },
+          async signInWithPassword({ email, password }) {
+            try {
+              const payload = await request('/auth/v1/token?grant_type=password', { body: { email, password } });
+              store(normalizeSession(payload));
+              notify('SIGNED_IN');
+              return { data: { session }, error: null };
+            } catch (error) {
+              return { data: { session: null }, error };
+            }
+          },
+          async updateUser({ password }) {
+            try {
+              if (!session?.access_token) throw new Error('Please sign in again.');
+              const user = await request('/auth/v1/user', {
+                method: 'PUT',
+                token: session.access_token,
+                body: { password }
+              });
+              notify('USER_UPDATED');
+              return { data: { user }, error: null };
+            } catch (error) {
+              return { data: { user: null }, error };
+            }
+          },
+          async signOut() {
+            let error = null;
+            if (session?.access_token) {
+              try { await request('/auth/v1/logout?scope=local', { token: session.access_token }); }
+              catch (requestError) { error = requestError; }
+            }
+            store(null);
+            notify('SIGNED_OUT');
+            return { error };
+          }
+        }
+      };
+    }
+    const supabaseClient = createSupabaseAuthClient(CONFIG.supabaseUrl, CONFIG.anonKey);
+
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+    const SCREEN_BACKGROUNDS = Object.freeze([
+      '#211113',
+      '#21190c',
+      '#0d1f18',
+      '#0d1825',
+      '#1b1126'
+    ]);
+    function shuffledScreenBackgrounds() {
+      const backgrounds = [...SCREEN_BACKGROUNDS];
+      for (let index = backgrounds.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [backgrounds[index], backgrounds[swapIndex]] = [backgrounds[swapIndex], backgrounds[index]];
+      }
+      return backgrounds;
+    }
+    const state = { session: null, history: [], filter: 'all', historyLoaded: false, goalLoaded: false, goalWeekKey: '', pendingDelete: null, screenBackgrounds: shuffledScreenBackgrounds() };
+    $$('.tab-btn').forEach((button, index) => {
+      const screen = $(`#screen-${button.dataset.tab}`);
+      screen.style.setProperty('--screen-bg', state.screenBackgrounds[index]);
+    });
+    document.documentElement.style.setProperty('--active-screen-bg', '#0d1511');
+    const GOAL = Object.freeze({ treadmillCalories: 1500, timeZone: 'America/New_York' });
+    // FUTURE WEIGHTLIFTING GOALS: add strength targets to GOAL and render them beneath the treadmill goal.
+
+    function apiHeaders(extra = {}) {
+      if (!state.session?.access_token) throw new Error('Please sign in again.');
+      return {
+        apikey: CONFIG.anonKey,
+        Authorization: `Bearer ${state.session.access_token}`,
+        'Content-Type': 'application/json',
+        ...extra
+      };
+    }
+
+    async function api(table, { method = 'GET', query = '', body } = {}) {
+      const response = await fetch(`${CONFIG.supabaseUrl}/rest/v1/${table}${query ? `?${query}` : ''}`, {
+        method,
+        headers: apiHeaders(method === 'GET' ? {} : { Prefer: 'return=representation' }),
+        body: body === undefined ? undefined : JSON.stringify(body)
+      });
+      if (!response.ok) {
+        let detail = '';
+        try { const data = await response.json(); detail = data.message || data.details || ''; } catch (_) {}
+        throw new Error(detail || `Request failed (${response.status})`);
+      }
+      if (response.status === 204) return [];
+      const text = await response.text();
+      return text ? JSON.parse(text) : [];
+    }
+
+    function localDateValue(date = new Date()) {
+      const pad = n => String(n).padStart(2, '0');
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    }
+    function formatNumber(value, max = 2) {
+      if (value === null || value === undefined || value === '') return '—';
+      return new Intl.NumberFormat(undefined, { maximumFractionDigits: max }).format(Number(value));
+    }
+    function setDefaults() {
+      $$('.js-today').forEach(node => node.textContent = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(new Date()));
+    }
+
+    let toastTimer;
+    function showToast(message) {
+      const toast = $('#toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+    function setError(id, message = '') {
+      const node = $(`#${id}`);
+      node.textContent = message;
+      node.classList.toggle('show', Boolean(message));
+    }
+    function setSaving(button, saving, label) {
+      button.disabled = saving;
+      button.innerHTML = saving ? '<span class="spinner" aria-hidden="true"></span><span>Saving…</span>' : `<span>${label}</span>`;
+    }
+    function setAuthStatus(message = '', isError = false) {
+      const status = $('#auth-status');
+      status.textContent = message;
+      status.classList.toggle('show', Boolean(message));
+      status.classList.toggle('error', Boolean(message) && isError);
+    }
+    function setAuthBusy(busy) {
+      const submit = $('#auth-submit');
+      $('#auth-form').setAttribute('aria-busy', String(busy));
+      $('#auth-email').disabled = busy;
+      $('#auth-password').disabled = busy;
+      submit.disabled = busy;
+      submit.innerHTML = busy
+        ? '<span class="spinner" aria-hidden="true"></span><span>Signing in…</span>'
+        : '<span>Sign in</span>';
+    }
+    function setPasswordStatus(message = '', type = '') {
+      const status = $('#password-status');
+      status.textContent = message;
+      status.classList.toggle('show', Boolean(message));
+      status.classList.toggle('success', type === 'success');
+      status.classList.toggle('error', type === 'error');
+    }
+    function applySession(session) {
+      const wasSignedIn = Boolean(state.session);
+      state.session = session || null;
+      const signedIn = Boolean(state.session);
+      $('#auth-gate').hidden = signedIn;
+      $('.app').hidden = !signedIn;
+      $('.bottom-nav').hidden = !signedIn;
+      if (signedIn) {
+        const activeScreen = $('.screen.active');
+        document.documentElement.style.setProperty('--active-screen-bg', activeScreen?.style.getPropertyValue('--screen-bg') || state.screenBackgrounds[0]);
+        setDefaults();
+        requestAnimationFrame(() => slidingIndicators.forEach(move => move()));
+        if (!wasSignedIn) {
+          state.goalLoaded = false;
+          state.historyLoaded = false;
+          loadGoal();
+        }
+      } else {
+        document.documentElement.style.setProperty('--active-screen-bg', '#0d1511');
+        state.history = [];
+        state.historyLoaded = false;
+        state.goalLoaded = false;
+        state.goalWeekKey = '';
+        if (wasSignedIn) {
+          $('#auth-password').value = '';
+          setAuthStatus();
+          setPasswordStatus();
+        }
+        $('#auth-email').focus();
+      }
+    }
+    async function bootstrapAuth() {
+      if (!supabaseClient) {
+        setAuthStatus('Sign-in couldn’t start. Check your connection and try again.', true);
+        return;
+      }
+      const { data, error } = await supabaseClient.auth.getSession();
+      if (error) setAuthStatus('Sign-in couldn’t start. Check your connection and try again.', true);
+      applySession(data?.session || null);
+      supabaseClient.auth.onAuthStateChange((_event, session) => applySession(session));
+    }
+    function parseNullableNumber(value) { return value === '' ? null : Number(value); }
+
+    function calendarDateInTimeZone(date, timeZone) {
+      const parts = new Intl.DateTimeFormat('en-US-u-ca-gregory', {
+        timeZone, year: 'numeric', month: '2-digit', day: '2-digit'
+      }).formatToParts(date);
+      const values = Object.fromEntries(parts.filter(part => part.type !== 'literal').map(part => [part.type, Number(part.value)]));
+      return { year: values.year, month: values.month, day: values.day };
+    }
+    function addCalendarDays(parts, amount) {
+      const date = new Date(Date.UTC(parts.year, parts.month - 1, parts.day + amount));
+      return { year: date.getUTCFullYear(), month: date.getUTCMonth() + 1, day: date.getUTCDate() };
+    }
+    function zonedMidnightToUtc(parts, timeZone) {
+      const intendedWallTime = Date.UTC(parts.year, parts.month - 1, parts.day, 0, 0, 0);
+      let candidate = new Date(intendedWallTime);
+      const formatter = new Intl.DateTimeFormat('en-US-u-ca-gregory', {
+        timeZone, year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+      });
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        const values = Object.fromEntries(formatter.formatToParts(candidate).filter(part => part.type !== 'literal').map(part => [part.type, Number(part.value)]));
+        const representedWallTime = Date.UTC(values.year, values.month - 1, values.day, values.hour, values.minute, values.second);
+        const correction = intendedWallTime - representedWallTime;
+        if (!correction) break;
+        candidate = new Date(candidate.getTime() + correction);
+      }
+      return candidate;
+    }
+    function goalWeek(now = new Date()) {
+      const today = calendarDateInTimeZone(now, GOAL.timeZone);
+      const dayOfWeek = new Date(Date.UTC(today.year, today.month - 1, today.day)).getUTCDay();
+      const startDate = addCalendarDays(today, -dayOfWeek);
+      const endDate = addCalendarDays(startDate, 7);
+      const key = `${startDate.year}-${String(startDate.month).padStart(2, '0')}-${String(startDate.day).padStart(2, '0')}`;
+      return {
+        key,
+        startDate,
+        endDate,
+        startUtc: zonedMidnightToUtc(startDate, GOAL.timeZone),
+        endUtc: zonedMidnightToUtc(endDate, GOAL.timeZone)
+      };
+    }
+    function formatGoalRange(week) {
+      const endInclusive = addCalendarDays(week.endDate, -1);
+      const start = new Date(Date.UTC(week.startDate.year, week.startDate.month - 1, week.startDate.day));
+      const end = new Date(Date.UTC(endInclusive.year, endInclusive.month - 1, endInclusive.day));
+      const startText = new Intl.DateTimeFormat(undefined, { timeZone: 'UTC', month: 'short', day: 'numeric' }).format(start);
+      const endText = new Intl.DateTimeFormat(undefined, { timeZone: 'UTC', month: 'short', day: 'numeric' }).format(end);
+      return `${startText} – ${endText} · Eastern Time`;
+    }
+    function dayIndexInGoalWeek(date) {
+      const local = calendarDateInTimeZone(date, GOAL.timeZone);
+      return new Date(Date.UTC(local.year, local.month - 1, local.day)).getUTCDay();
+    }
+    function compactCalories(value) {
+      if (value < 1000) return formatNumber(value, 0);
+      return `${Number((value / 1000).toFixed(1))}k`;
+    }
+    function renderGoal(total, daily, week) {
+      const content = $('#goal-content');
+      content.innerHTML = '';
+      $('#goal-range').textContent = formatGoalRange(week);
+      $('#goal-status-chip').textContent = `${formatNumber(total, 0)} / ${formatNumber(GOAL.treadmillCalories, 0)}`;
+
+      const totalWrap = document.createElement('div'); totalWrap.className = 'goal-total';
+      const totalValue = document.createElement('strong'); totalValue.textContent = formatNumber(total, 0);
+      const totalLabel = document.createElement('span'); totalLabel.textContent = `of ${formatNumber(GOAL.treadmillCalories, 0)} calories`;
+      totalWrap.append(totalValue, totalLabel);
+
+      const percent = Math.round((total / GOAL.treadmillCalories) * 100);
+      const track = document.createElement('div'); track.className = 'progress-track'; track.setAttribute('role', 'progressbar');
+      track.setAttribute('aria-label', 'Weekly treadmill calorie progress'); track.setAttribute('aria-valuemin', '0');
+      track.setAttribute('aria-valuemax', String(GOAL.treadmillCalories)); track.setAttribute('aria-valuenow', String(total));
+      const fill = document.createElement('div'); fill.className = 'progress-fill'; fill.style.width = `${Math.min(100, Math.max(0, percent))}%`; track.append(fill);
+
+      const meta = document.createElement('div'); meta.className = 'goal-meta';
+      const complete = document.createElement('span'); complete.textContent = `${percent}% complete`;
+      const remaining = document.createElement('span'); remaining.textContent = `${formatNumber(Math.max(0, GOAL.treadmillCalories - total), 0)} cal remaining`;
+      meta.append(complete, remaining);
+
+      const breakdown = document.createElement('div'); breakdown.className = 'goal-breakdown';
+      const title = document.createElement('h2'); title.textContent = 'Daily breakdown';
+      const copy = document.createElement('p'); copy.textContent = 'Treadmill calories logged each day';
+      const bars = document.createElement('div'); bars.className = 'week-bars'; bars.setAttribute('role', 'list');
+      const labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const maxDay = Math.max(...daily, 1);
+      daily.forEach((value, index) => {
+        const bar = document.createElement('div'); bar.className = 'day-bar'; bar.setAttribute('role', 'listitem'); bar.setAttribute('aria-label', `${labels[index]}: ${formatNumber(value, 0)} calories`);
+        const valueNode = document.createElement('span'); valueNode.className = 'day-value'; valueNode.textContent = compactCalories(value);
+        const dayTrack = document.createElement('div'); dayTrack.className = 'day-track';
+        const dayFill = document.createElement('div'); dayFill.className = 'day-fill'; dayFill.style.height = `${(value / maxDay) * 100}%`; dayTrack.append(dayFill);
+        const label = document.createElement('span'); label.className = 'day-label'; label.textContent = labels[index];
+        bar.append(valueNode, dayTrack, label); bars.append(bar);
+      });
+      breakdown.append(title, copy, bars);
+      content.append(totalWrap, track, meta, breakdown);
+    }
+    async function loadGoal() {
+      const week = goalWeek();
+      const content = $('#goal-content');
+      content.innerHTML = '<div class="load-state"><div class="spinner"></div><span>Loading this week…</span></div>';
+      $('#goal-range').textContent = formatGoalRange(week);
+      $('#goal-status-chip').textContent = '—';
+      try {
+        const start = encodeURIComponent(week.startUtc.toISOString());
+        const end = encodeURIComponent(week.endUtc.toISOString());
+        const workouts = await api('workouts', { query: `select=id,performed_at&kind=eq.treadmill&performed_at=gte.${start}&performed_at=lt.${end}&order=performed_at.asc` });
+        const ids = workouts.map(workout => workout.id);
+        const logs = ids.length ? await api('treadmill_logs', { query: `select=workout_id,calories&workout_id=in.(${ids.join(',')})` }) : [];
+        const daily = Array(7).fill(0);
+        const performedAtById = new Map(workouts.map(workout => [workout.id, workout.performed_at]));
+        let total = 0;
+        logs.forEach(log => {
+          const calories = Number(log.calories) || 0;
+          const performedAt = performedAtById.get(log.workout_id);
+          total += calories;
+          if (performedAt) daily[dayIndexInGoalWeek(new Date(performedAt))] += calories;
+        });
+        state.goalLoaded = true;
+        state.goalWeekKey = week.key;
+        renderGoal(total, daily, week);
+      } catch (error) {
+        state.goalLoaded = false;
+        content.innerHTML = '';
+        const empty = document.createElement('div'); empty.className = 'empty-state';
+        const title = document.createElement('strong'); title.textContent = 'Couldn’t load your weekly goal';
+        const copy = document.createElement('span'); copy.textContent = error.message;
+        const retry = document.createElement('button'); retry.className = 'secondary retry'; retry.type = 'button'; retry.textContent = 'Try again'; retry.addEventListener('click', loadGoal);
+        empty.append(title, copy, document.createElement('br'), retry); content.append(empty);
+      }
+    }
+
+    const slidingIndicators = [];
+    function setupSlidingIndicator(container, buttonSelector) {
+      const indicator = document.createElement('span');
+      indicator.className = 'glass-indicator';
+      indicator.setAttribute('aria-hidden', 'true');
+      container.prepend(indicator);
+      let hasLayout = false;
+      const move = () => {
+        const active = container.querySelector(`${buttonSelector}.active`);
+        if (!active || !active.offsetWidth) return;
+        if (!hasLayout) indicator.classList.remove('ready');
+        indicator.style.width = `${active.offsetWidth}px`;
+        indicator.style.transform = `translate3d(${active.offsetLeft}px, 0, 0)`;
+        if (!hasLayout) {
+          hasLayout = true;
+          requestAnimationFrame(() => requestAnimationFrame(() => indicator.classList.add('ready')));
+        }
+      };
+      move();
+      slidingIndicators.push(move);
+      return move;
+    }
+    const moveBottomNavIndicator = setupSlidingIndicator($('.bottom-nav'), '.tab-btn');
+    const moveHistoryIndicator = setupSlidingIndicator($('.segmented'), '.filter-btn');
+    window.addEventListener('resize', () => slidingIndicators.forEach(move => move()));
+    if (document.fonts?.ready) document.fonts.ready.then(() => slidingIndicators.forEach(move => move()));
+
+    function switchTab(tab) {
+      const activeScreen = $(`#screen-${tab}`);
+      $$('.screen').forEach(screen => screen.classList.toggle('active', screen === activeScreen));
+      document.documentElement.style.setProperty('--active-screen-bg', activeScreen.style.getPropertyValue('--screen-bg'));
+      $$('.tab-btn').forEach(btn => {
+        const active = btn.dataset.tab === tab;
+        btn.classList.toggle('active', active);
+        active ? btn.setAttribute('aria-current', 'page') : btn.removeAttribute('aria-current');
+      });
+      moveBottomNavIndicator();
+      requestAnimationFrame(() => slidingIndicators.forEach(move => move()));
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      if (tab === 'goal' && (!state.goalLoaded || state.goalWeekKey !== goalWeek().key)) loadGoal();
+      if (tab === 'history' && !state.historyLoaded) loadHistory();
+    }
+    $$('.tab-btn').forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
+
+    $('#treadmill-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+      const button = $('#tm-save');
+      setError('tm-error'); setSaving(button, true, 'Save treadmill session');
+      let workoutId = null;
+      try {
+        const workouts = await api('workouts', { method: 'POST', body: {
+          kind: 'treadmill',
+          performed_at: new Date().toISOString(),
+          notes: $('#tm-notes').value.trim() || null
+        }});
+        workoutId = workouts[0]?.id;
+        if (!workoutId) throw new Error('The workout was saved without an ID.');
+        await api('treadmill_logs', { method: 'POST', body: {
+          workout_id: workoutId,
+          duration_min: Number($('#tm-duration').value),
+          incline_pct: Number($('#tm-incline').value),
+          speed_mph: Number($('#tm-speed').value),
+          calories: Number($('#tm-calories').value),
+          distance_miles: parseNullableNumber($('#tm-distance').value)
+        }});
+        form.reset();
+        $('#tm-duration').value = '30'; $('#tm-incline').value = '15'; $('#tm-speed').value = '2.6';
+        state.historyLoaded = false;
+        state.goalLoaded = false;
+        showToast('Treadmill session saved');
+        switchTab('history');
+      } catch (error) {
+        if (workoutId) { try { await api('workouts', { method: 'DELETE', query: `id=eq.${workoutId}` }); } catch (_) {} }
+        setError('tm-error', `Couldn’t save the session. ${error.message}`);
+      } finally { setSaving(button, false, 'Save treadmill session'); }
+    });
+
+    let exerciseCounter = 0;
+    function makeSetRow(card, values = {}) {
+      const row = document.createElement('div');
+      row.className = 'set-row';
+      row.innerHTML = `<span class="set-no"></span><input class="set-reps" type="number" min="0" step="1" inputmode="numeric" aria-label="Reps" placeholder="Reps" required value="${values.reps ?? ''}"><input class="set-weight" type="number" min="0" step="0.5" inputmode="decimal" aria-label="Weight in pounds" placeholder="Weight" required value="${values.weight ?? ''}"><button class="icon-btn remove-set" type="button" aria-label="Remove set"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14" stroke-linecap="round"/></svg></button>`;
+      $('.remove-set', row).addEventListener('click', () => { if ($$('.set-row', card).length > 1) { row.remove(); renumberSets(card); } else { $('.set-reps', row).value = ''; $('.set-weight', row).value = ''; } });
+      return row;
+    }
+    function renumberSets(card) { $$('.set-row', card).forEach((row, index) => $('.set-no', row).textContent = index + 1); }
+    function addExercise(name = '', sets = [{}]) {
+      exerciseCounter += 1;
+      const card = document.createElement('div');
+      card.className = 'exercise-card';
+      card.innerHTML = `<div class="exercise-top"><div class="field"><label for="exercise-${exerciseCounter}" class="required">Exercise name</label><select id="exercise-${exerciseCounter}" class="exercise-name" required><option value="dumbbell bench press">dumbbell bench press</option><option value="dumbbell shoulder press">dumbbell shoulder press</option><option value="bench bicep curl">bench bicep curl</option><option value="standing bicep curl">standing bicep curl</option><option value="bench hammer curl">bench hammer curl</option><option value="standing hammer curl">standing hammer curl</option><option value="leg press">leg press</option></select></div><button class="icon-btn remove-exercise" type="button" aria-label="Remove exercise"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14" stroke-linecap="round"/></svg></button></div><div class="set-head"><span>Set</span><span>Reps</span><span>Weight (lb)</span><span></span></div><div class="set-list"></div><button class="ghost add-set" type="button">+ Add set</button>`;
+      if (name) $('.exercise-name', card).value = name;
+      const list = $('.set-list', card);
+      sets.forEach(set => list.append(makeSetRow(card, set)));
+      $('.add-set', card).addEventListener('click', () => { list.append(makeSetRow(card)); renumberSets(card); const inputs = $$('.set-row', card).at(-1).querySelector('input'); inputs.focus(); });
+      $('.remove-exercise', card).addEventListener('click', () => {
+        const stack = $('#exercise-stack');
+        if ($$('.exercise-card', stack).length > 1) card.remove();
+        else { $('.exercise-name', card).selectedIndex = 0; list.innerHTML = ''; list.append(makeSetRow(card)); renumberSets(card); }
+      });
+      $('#exercise-stack').append(card);
+      renumberSets(card);
+    }
+    $('#add-exercise').addEventListener('click', () => { addExercise(); $$('.exercise-name').at(-1).focus(); });
+    addExercise('', [{}, {}, {}]);
+
+    $('#strength-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+      const exercises = $$('.exercise-card').map(card => ({
+        exercise: $('.exercise-name', card).value.trim(),
+        sets: $$('.set-row', card).map((row, index) => ({
+          set_no: index + 1,
+          reps: Number($('.set-reps', row).value),
+          weight_lbs: Number($('.set-weight', row).value)
+        }))
+      }));
+      if (!exercises.length || exercises.some(item => !item.exercise || !item.sets.length)) { setError('st-error', 'Add at least one named exercise with one set.'); return; }
+      const button = $('#st-save');
+      setError('st-error'); setSaving(button, true, 'Save strength session');
+      let workoutId = null;
+      try {
+        const workouts = await api('workouts', { method: 'POST', body: {
+          kind: 'strength',
+          performed_at: new Date().toISOString(),
+          notes: $('#st-notes').value.trim() || null
+        }});
+        workoutId = workouts[0]?.id;
+        if (!workoutId) throw new Error('The workout was saved without an ID.');
+        const rows = exercises.flatMap(item => item.sets.map(set => ({ workout_id: workoutId, exercise: item.exercise, ...set })));
+        await api('strength_logs', { method: 'POST', body: rows });
+        form.reset();
+        $('#exercise-stack').innerHTML = ''; addExercise('', [{}, {}, {}]);
+        state.historyLoaded = false;
+        showToast('Strength session saved');
+        switchTab('history');
+      } catch (error) {
+        if (workoutId) { try { await api('workouts', { method: 'DELETE', query: `id=eq.${workoutId}` }); } catch (_) {} }
+        setError('st-error', `Couldn’t save the session. ${error.message}`);
+      } finally { setSaving(button, false, 'Save strength session'); }
+    });
+
+    function syncMeasurementUnit() {
+      const kind = $('#ms-kind').value;
+      const other = kind === 'Other';
+      $('#other-kind-field').classList.toggle('show', other);
+      $('#ms-kind-other').required = other;
+      $('#ms-unit').value = kind === 'Body weight' ? 'lbs' : kind === 'Body fat %' ? '%' : 'in';
+    }
+    $('#ms-kind').addEventListener('change', syncMeasurementUnit);
+    syncMeasurementUnit();
+
+    $('#measurement-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+      const button = $('#ms-save');
+      const kind = $('#ms-kind').value === 'Other' ? $('#ms-kind-other').value.trim() : $('#ms-kind').value;
+      if (!kind) { setError('ms-error', 'Enter a name for this measurement.'); return; }
+      setError('ms-error'); setSaving(button, true, 'Save measurement');
+      try {
+        await api('measurements', { method: 'POST', body: {
+          measured_at: localDateValue(),
+          kind,
+          value: Number($('#ms-value').value),
+          unit: $('#ms-unit').value
+        }});
+        form.reset(); syncMeasurementUnit();
+        state.historyLoaded = false;
+        showToast('Measurement saved');
+        switchTab('history');
+      } catch (error) {
+        setError('ms-error', `Couldn’t save the measurement. ${error.message}`);
+      } finally { setSaving(button, false, 'Save measurement'); }
+    });
+
+    function makeIcon(kind) {
+      const wrap = document.createElement('span'); wrap.className = 'kind-mark';
+      const paths = {
+        treadmill: '<path d="M5 18h14M7.5 18 9 9h6l2 9M10 6h4M17 4l2 2-2 2" stroke-linecap="round" stroke-linejoin="round"/>',
+        strength: '<path d="M2 9v6M5 7v10M8 11h8M16 7v10M19 9v6M2 12h3M19 12h3" stroke-linecap="round"/>',
+        measurement: '<path d="M6 3h12v18H6zM9 3v4M12 3v3M15 3v4M9 17h6" stroke-linecap="round" stroke-linejoin="round"/>'
+      };
+      wrap.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">${paths[kind]}</svg>`;
+      return wrap;
+    }
+    function makeMetric(value, label) {
+      const div = document.createElement('div'); div.className = 'metric';
+      const strong = document.createElement('strong'); strong.textContent = value;
+      const span = document.createElement('span'); span.textContent = label;
+      div.append(strong, span); return div;
+    }
+    function historyDate(item) {
+      if (item.type === 'measurement') {
+        const [y, m, d] = item.measured_at.split('-').map(Number);
+        return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(y, m - 1, d));
+      }
+      return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' }).format(new Date(item.performed_at));
+    }
+    function renderHistory() {
+      const content = $('#history-content'); content.innerHTML = '';
+      const items = state.filter === 'all' ? state.history : state.history.filter(item => item.type === state.filter);
+      $('#history-count').textContent = `${items.length} ${items.length === 1 ? 'entry' : 'entries'}`;
+      if (!items.length) {
+        const empty = document.createElement('div'); empty.className = 'empty-state';
+        empty.innerHTML = '<svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 4h14v16H5zM8 9h8M8 13h8M8 17h5" stroke-linecap="round"/></svg><strong>No entries yet</strong><span>Saved sessions and measurements will appear here.</span>';
+        content.append(empty); return;
+      }
+      const list = document.createElement('div'); list.className = 'history-list';
+      items.forEach(item => {
+        const card = document.createElement('article'); card.className = 'history-card';
+        const head = document.createElement('div'); head.className = 'history-card-head';
+        const kind = document.createElement('div'); kind.className = 'history-kind'; kind.append(makeIcon(item.type));
+        const text = document.createElement('div');
+        const h2 = document.createElement('h2');
+        h2.textContent = item.type === 'measurement' ? item.kind : item.type === 'treadmill' ? 'Treadmill' : 'Strength';
+        const date = document.createElement('div'); date.className = 'history-date'; date.textContent = historyDate(item);
+        text.append(h2, date); kind.append(text);
+        const del = document.createElement('button'); del.type = 'button'; del.className = 'delete-btn'; del.textContent = 'Delete';
+        del.addEventListener('click', () => openDelete(item));
+        head.append(kind, del); card.append(head);
+        if (item.type === 'treadmill') {
+          const metrics = document.createElement('div'); metrics.className = 'metrics';
+          const log = item.log || {};
+          metrics.append(makeMetric(`${formatNumber(log.calories, 0)} cal`, 'Calories'), makeMetric(`${formatNumber(log.duration_min)} min`, 'Duration'), makeMetric(`${formatNumber(log.incline_pct)}%`, 'Incline'), makeMetric(`${formatNumber(log.speed_mph)} mph`, 'Speed'));
+          if (log.distance_miles !== null && log.distance_miles !== undefined) metrics.append(makeMetric(`${formatNumber(log.distance_miles)} mi`, 'Distance'));
+          card.append(metrics);
+        } else if (item.type === 'strength') {
+          const detail = document.createElement('div'); detail.className = 'strength-detail';
+          const groups = {};
+          (item.logs || []).sort((a,b) => a.set_no - b.set_no).forEach(log => (groups[log.exercise] ||= []).push(log));
+          Object.entries(groups).forEach(([exercise, sets]) => {
+            const group = document.createElement('div'); group.className = 'exercise-summary';
+            const title = document.createElement('strong'); title.textContent = exercise;
+            const line = document.createElement('span'); line.textContent = sets.map(set => `${set.set_no}: ${formatNumber(set.weight_lbs)} lb × ${formatNumber(set.reps, 0)}`).join('  ·  ');
+            group.append(title, line); detail.append(group);
+          });
+          card.append(detail);
+        } else {
+          const metrics = document.createElement('div'); metrics.className = 'metrics'; metrics.append(makeMetric(`${formatNumber(item.value)} ${item.unit}`, 'Recorded value')); card.append(metrics);
+        }
+        if (item.notes) { const notes = document.createElement('p'); notes.className = 'history-notes'; notes.textContent = item.notes; card.append(notes); }
+        list.append(card);
+      });
+      content.append(list);
+    }
+
+    async function loadHistory() {
+      const content = $('#history-content');
+      content.innerHTML = '<div class="load-state"><div class="spinner"></div><span>Loading history…</span></div>';
+      $('#history-count').textContent = '—';
+      try {
+        const [treadmill, strength, measurements] = await Promise.all([
+          api('workouts', { query: 'select=id,performed_at,kind,notes&kind=eq.treadmill&order=performed_at.desc&limit=30' }),
+          api('workouts', { query: 'select=id,performed_at,kind,notes&kind=eq.strength&order=performed_at.desc&limit=30' }),
+          api('measurements', { query: 'select=id,measured_at,kind,value,unit&order=measured_at.desc&limit=30' })
+        ]);
+        const treadmillIds = treadmill.map(item => item.id);
+        const strengthIds = strength.map(item => item.id);
+        const [treadmillLogs, strengthLogs] = await Promise.all([
+          treadmillIds.length ? api('treadmill_logs', { query: `select=*&workout_id=in.(${treadmillIds.join(',')})` }) : [],
+          strengthIds.length ? api('strength_logs', { query: `select=*&workout_id=in.(${strengthIds.join(',')})&order=set_no.asc` }) : []
+        ]);
+        state.history = [
+          ...treadmill.map(item => ({ ...item, type: 'treadmill', log: treadmillLogs.find(log => log.workout_id === item.id) })),
+          ...strength.map(item => ({ ...item, type: 'strength', logs: strengthLogs.filter(log => log.workout_id === item.id) })),
+          ...measurements.map(item => ({ ...item, type: 'measurement' }))
+        ].sort((a, b) => {
+          const ad = a.type === 'measurement' ? `${a.measured_at}T12:00:00` : a.performed_at;
+          const bd = b.type === 'measurement' ? `${b.measured_at}T12:00:00` : b.performed_at;
+          return new Date(bd) - new Date(ad);
+        });
+        state.historyLoaded = true;
+        renderHistory();
+      } catch (error) {
+        content.innerHTML = '';
+        const empty = document.createElement('div'); empty.className = 'empty-state';
+        const title = document.createElement('strong'); title.textContent = 'Couldn’t load history';
+        const copy = document.createElement('span'); copy.textContent = error.message;
+        const retry = document.createElement('button'); retry.className = 'secondary retry'; retry.type = 'button'; retry.textContent = 'Try again'; retry.addEventListener('click', loadHistory);
+        empty.append(title, copy, document.createElement('br'), retry); content.append(empty);
+      }
+    }
+    $$('.filter-btn').forEach(button => button.addEventListener('click', () => {
+      state.filter = button.dataset.filter;
+      $$('.filter-btn').forEach(item => item.classList.toggle('active', item === button));
+      moveHistoryIndicator();
+      renderHistory();
+    }));
+
+    function openDelete(item) {
+      state.pendingDelete = item;
+      $('#delete-title').textContent = `Delete ${item.type === 'measurement' ? 'measurement' : 'session'}?`;
+      $('#delete-copy').textContent = item.type === 'measurement' ? `${item.kind} from ${historyDate(item)} will be permanently removed.` : `${item.type === 'treadmill' ? 'Treadmill' : 'Strength'} from ${historyDate(item)} and all of its details will be permanently removed.`;
+      setError('delete-error');
+      $('#delete-modal').classList.add('show');
+      $('#delete-cancel').focus();
+    }
+    function closeDelete() { $('#delete-modal').classList.remove('show'); state.pendingDelete = null; }
+    $('#delete-cancel').addEventListener('click', closeDelete);
+    $('#delete-modal').addEventListener('click', event => { if (event.target === event.currentTarget) closeDelete(); });
+    $('#delete-confirm').addEventListener('click', async () => {
+      const item = state.pendingDelete; if (!item) return;
+      const button = $('#delete-confirm'); button.disabled = true; button.innerHTML = '<span class="spinner" aria-hidden="true"></span><span>Deleting…</span>';
+      setError('delete-error');
+      try {
+        if (item.type === 'measurement') {
+          await api('measurements', { method: 'DELETE', query: `id=eq.${item.id}` });
+        } else {
+          const child = item.type === 'treadmill' ? 'treadmill_logs' : 'strength_logs';
+          await api(child, { method: 'DELETE', query: `workout_id=eq.${item.id}` });
+          await api('workouts', { method: 'DELETE', query: `id=eq.${item.id}` });
+        }
+        state.history = state.history.filter(entry => !(entry.type === item.type && entry.id === item.id));
+        if (item.type === 'treadmill') state.goalLoaded = false;
+        closeDelete(); renderHistory(); showToast('Entry deleted');
+      } catch (error) {
+        setError('delete-error', `Couldn’t delete this entry. ${error.message}`);
+      } finally { button.disabled = false; button.textContent = 'Delete'; }
+    });
+
+    $('#auth-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!supabaseClient) { setAuthStatus('Sign-in couldn’t start. Check your connection and try again.', true); return; }
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+      setAuthStatus();
+      setAuthBusy(true);
+      try {
+        const { error } = await supabaseClient.auth.signInWithPassword({
+          email: $('#auth-email').value.trim(),
+          password: $('#auth-password').value
+        });
+        if (error) throw error;
+      } catch (_) {
+        setAuthStatus("That email and password didn't match. Try again.", true);
+        $('#auth-password').select();
+      } finally {
+        setAuthBusy(false);
+      }
+    });
+    $('#password-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+      const newPassword = $('#new-password').value;
+      const confirmPassword = $('#confirm-password').value;
+      if (newPassword !== confirmPassword) {
+        setPasswordStatus("The two passwords don't match.", 'error');
+        $('#confirm-password').select();
+        return;
+      }
+      const button = $('#password-submit');
+      button.disabled = true;
+      button.innerHTML = '<span class="spinner" aria-hidden="true"></span><span>Updating…</span>';
+      setPasswordStatus();
+      try {
+        const { error } = await supabaseClient.auth.updateUser({ password: newPassword });
+        if (error) throw error;
+        form.reset();
+        setPasswordStatus('Password updated.', 'success');
+      } catch (error) {
+        setPasswordStatus(error.message || 'Couldn’t update the password.', 'error');
+      } finally {
+        button.disabled = false;
+        button.innerHTML = '<span>Update password</span>';
+      }
+    });
+    $$('.sign-out').forEach(button => button.addEventListener('click', async () => {
+      if (!supabaseClient) return;
+      const buttons = $$('.sign-out');
+      buttons.forEach(item => item.disabled = true);
+      try {
+        const { error } = await supabaseClient.auth.signOut();
+        if (error) throw error;
+        applySession(null);
+      } catch (error) {
+        showToast(`Couldn’t sign out. ${error.message}`);
+      } finally {
+        buttons.forEach(item => item.disabled = false);
+      }
+    }));
+    bootstrapAuth();
+  </script>
+</body>
+</html>
