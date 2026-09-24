@@ -167,6 +167,16 @@
     .goal-meta { display: flex; justify-content: space-between; gap: 14px; margin-top: 10px; color: var(--muted); font-size: .78rem; font-weight: 680; }
     .goal-meta span:last-child { text-align: right; }
     .goal-breakdown { margin-top: 25px; padding-top: 19px; border-top: 1px solid var(--line); }
+    .goal-history { margin-top: 25px; padding-top: 19px; border-top: 1px solid var(--line); }
+    .goal-history h2 { margin: 0; font-size: .96rem; letter-spacing: -.015em; }
+    .goal-history > p { margin: 4px 0 14px; color: var(--muted); font-size: .76rem; }
+    .hist-row { margin-bottom: 13px; }
+    .hist-row:last-child { margin-bottom: 0; }
+    .hist-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+    .hist-label { font-size: .78rem; font-weight: 700; }
+    .hist-value { color: var(--muted); font-size: .72rem; font-weight: 700; white-space: nowrap; }
+    .hist-track { height: 10px; overflow: hidden; border-radius: 99px; background: var(--surface-2); }
+    .hist-fill { height: 100%; border-radius: inherit; background: var(--accent); }
     .password-panel { margin-top: 14px; }
     .password-panel h2 { margin: 0 0 5px; font-size: 1.05rem; letter-spacing: -.018em; }
     .password-panel > p { margin: 0 0 17px; color: var(--muted); font-size: .82rem; line-height: 1.45; }
@@ -823,6 +833,7 @@
     });
     document.documentElement.style.setProperty('--active-screen-bg', '#0d1511');
     const GOAL = Object.freeze({ treadmillCalories: 1500, timeZone: 'America/New_York' });
+    const GOAL_HISTORY_WEEKS = 8;
     // FUTURE WEIGHTLIFTING GOALS: add strength targets to GOAL and render them beneath the treadmill goal.
 
     function apiHeaders(extra = {}) {
@@ -1003,7 +1014,7 @@
       if (value < 1000) return formatNumber(value, 0);
       return `${Number((value / 1000).toFixed(1))}k`;
     }
-    function renderGoal(total, daily, week) {
+    function renderGoal(total, daily, week, history) {
       const content = $('#goal-content');
       content.innerHTML = '';
       $('#goal-range').textContent = formatGoalRange(week);
@@ -1041,6 +1052,28 @@
       });
       breakdown.append(title, copy, bars);
       content.append(totalWrap, track, meta, breakdown);
+      if (history && history.length) {
+        const past = document.createElement('div'); past.className = 'goal-history';
+        const hTitle = document.createElement('h2'); hTitle.textContent = 'Past weeks';
+        const hCopy = document.createElement('p'); hCopy.textContent = 'Treadmill calories per completed week';
+        past.append(hTitle, hCopy);
+        history.forEach(entry => {
+          const row = document.createElement('div'); row.className = 'hist-row';
+          const top = document.createElement('div'); top.className = 'hist-top';
+          const label = document.createElement('span'); label.className = 'hist-label'; label.textContent = entry.label;
+          const value = document.createElement('span'); value.className = 'hist-value';
+          value.textContent = `${formatNumber(entry.total, 0)} / ${formatNumber(GOAL.treadmillCalories, 0)}`;
+          top.append(label, value);
+          const hTrack = document.createElement('div'); hTrack.className = 'hist-track';
+          hTrack.setAttribute('role', 'progressbar'); hTrack.setAttribute('aria-label', `${entry.label}: ${formatNumber(entry.total, 0)} of ${formatNumber(GOAL.treadmillCalories, 0)} calories`);
+          const hFill = document.createElement('div'); hFill.className = 'hist-fill';
+          hFill.style.width = `${Math.min(100, Math.max(0, Math.round((entry.total / GOAL.treadmillCalories) * 100)))}%`;
+          hTrack.append(hFill);
+          row.append(top, hTrack);
+          past.append(row);
+        });
+        content.append(past);
+      }
     }
     async function loadGoal() {
       const week = goalWeek();
@@ -1065,7 +1098,29 @@
         });
         state.goalLoaded = true;
         state.goalWeekKey = week.key;
-        renderGoal(total, daily, week);
+        const historyStartDate = addCalendarDays(week.startDate, -7 * GOAL_HISTORY_WEEKS);
+        const historyStart = encodeURIComponent(zonedMidnightToUtc(historyStartDate, GOAL.timeZone).toISOString());
+        const historyWorkouts = await api('workouts', { query: `select=id,performed_at&kind=eq.treadmill&performed_at=gte.${historyStart}&performed_at=lt.${start}&order=performed_at.asc` });
+        const historyIds = historyWorkouts.map(workout => workout.id);
+        const historyLogs = historyIds.length ? await api('treadmill_logs', { query: `select=workout_id,calories&workout_id=in.(${historyIds.join(',')})` }) : [];
+        const historyPerformedById = new Map(historyWorkouts.map(workout => [workout.id, workout.performed_at]));
+        const historyTotals = Array(GOAL_HISTORY_WEEKS).fill(0);
+        const historyStartUtcMs = Date.UTC(historyStartDate.year, historyStartDate.month - 1, historyStartDate.day);
+        historyLogs.forEach(log => {
+          const performedAt = historyPerformedById.get(log.workout_id);
+          if (!performedAt) return;
+          const local = calendarDateInTimeZone(new Date(performedAt), GOAL.timeZone);
+          const dayDiff = Math.round((Date.UTC(local.year, local.month - 1, local.day) - historyStartUtcMs) / 86400000);
+          const weekIndex = Math.floor(dayDiff / 7);
+          if (weekIndex >= 0 && weekIndex < GOAL_HISTORY_WEEKS) historyTotals[weekIndex] += Number(log.calories) || 0;
+        });
+        const history = historyTotals.map((weekTotal, index) => {
+          const weekStart = addCalendarDays(historyStartDate, 7 * index);
+          const weekEnd = addCalendarDays(weekStart, 7);
+          const label = formatGoalRange({ startDate: weekStart, endDate: weekEnd }).split(' · ')[0];
+          return { label, total: Math.round(weekTotal) };
+        }).reverse();
+        renderGoal(total, daily, week, history);
       } catch (error) {
         state.goalLoaded = false;
         content.innerHTML = '';
