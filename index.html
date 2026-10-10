@@ -403,6 +403,12 @@
     .exercise-summary { background: var(--field); border-radius: 11px; padding: 10px 11px; }
     .exercise-summary strong { display: block; font-size: .86rem; margin-bottom: 5px; }
     .exercise-summary span { color: var(--muted); font-size: .78rem; line-height: 1.5; }
+    .set-table { width: 100%; border-collapse: collapse; margin-top: 2px; font-size: .8rem; }
+    .set-table th { text-align: left; font-size: .66rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding: 0 10px 5px 0; }
+    .set-table th:nth-child(n+2), .set-table td:nth-child(n+2) { text-align: right; }
+    .set-table th:last-child, .set-table td:last-child { padding-right: 0; }
+    .set-table td { padding: 5px 10px 5px 0; border-top: 1px solid var(--line); color: var(--text); }
+    .set-table td:first-child { color: var(--muted); }
     .load-state, .empty-state { text-align: center; color: var(--muted); padding: 46px 18px; }
     .load-state .spinner { margin: 0 auto 12px; color: var(--accent); }
     .empty-state svg { color: var(--line); margin-bottom: 10px; }
@@ -1479,8 +1485,18 @@
           Object.entries(groups).forEach(([exercise, sets]) => {
             const group = document.createElement('div'); group.className = 'exercise-summary';
             const title = document.createElement('strong'); title.textContent = exercise;
-            const line = document.createElement('span'); line.textContent = sets.map(set => `${set.set_no}: ${formatNumber(set.weight_lbs)} lb × ${formatNumber(set.reps, 0)}`).join('  ·  ');
-            group.append(title, line); detail.append(group);
+                        const table = document.createElement('table'); table.className = 'set-table';
+            const thead = document.createElement('thead');
+            thead.innerHTML = '<tr><th scope="col">Set</th><th scope="col">Weight</th><th scope="col">Reps</th></tr>';
+            const tbody = document.createElement('tbody');
+            sets.forEach(set => {
+                const tr = document.createElement('tr');
+              const tdSet = document.createElement('td'); tdSet.textContent = set.set_no;
+              const tdWeight = document.createElement('td'); tdWeight.textContent = `${formatNumber(set.weight_lbs)} lb`;
+              const tdReps = document.createElement('td'); tdReps.textContent = formatNumber(set.reps, 0);
+              tr.append(tdSet, tdWeight, tdReps); tbody.append(tr); }); table.append(thead, tbody); group.append(title, table); detail.append(group);
+          });
+              });
           });
           card.append(detail);
         } else {
