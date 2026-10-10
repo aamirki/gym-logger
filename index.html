@@ -1494,9 +1494,9 @@
               const tdSet = document.createElement('td'); tdSet.textContent = set.set_no;
               const tdWeight = document.createElement('td'); tdWeight.textContent = `${formatNumber(set.weight_lbs)} lb`;
               const tdReps = document.createElement('td'); tdReps.textContent = formatNumber(set.reps, 0);
-              tr.append(tdSet, tdWeight, tdReps); tbody.append(tr); }); table.append(thead, tbody); group.append(title, table); detail.append(group);
-          });
-              });
+              tr.append(tdSet, tdWeight, tdReps); tbody.append(tr);
+            });
+            table.append(thead, tbody); group.append(title, table); detail.append(group);
           });
           card.append(detail);
         } else {
