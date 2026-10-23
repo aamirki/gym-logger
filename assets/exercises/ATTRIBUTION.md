@@ -11,6 +11,8 @@ yuhonas, which is MIT licensed:
 - bench-hammer-curl.gif ← Preacher_Hammer_Dumbbell_Curl
 - standing-hammer-curl.gif ← Hammer_Curls
 - leg-press.gif ← Leg_Press
+- leg-curl-machine.gif ← Lying_Leg_Curls
+  - leg-extension-machine.gif ← Leg_Extensions
 - chest-press-machine.gif ← Machine_Bench_Press
 - shoulder-press-machine.gif ← Machine_Shoulder_Military_Press
 - dumbbell-reverse-curl.gif ← Standing_Dumbbell_Reverse_Curl
